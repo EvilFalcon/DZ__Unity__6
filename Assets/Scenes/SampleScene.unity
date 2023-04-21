@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 1339916293}
   - component: {fileID: 1339916289}
   m_Layer: 0
-  m_Name: Spawner_Controler
+  m_Name: Spawner_Read_Dragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -639,7 +639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: -8500227701758036121, guid: aeb1f83b20d625e419fb263a5242986a, type: 3}
-  _waitSeconds: 3.35
+  _waitSeconds: 0.95
 --- !u!4 &1339916293
 Transform:
   m_ObjectHideFlags: 0

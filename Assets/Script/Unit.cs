@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+namespace Script
 {
+    public class Unit : MonoBehaviour
+    {
+    }
 }
