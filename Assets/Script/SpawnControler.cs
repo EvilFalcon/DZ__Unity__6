@@ -1,20 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Spawner_Script : MonoBehaviour
+public class SpawnControler : MonoBehaviour
 {
-    [SerializeField] public GameObject prifab;
-    private WaitForSeconds _spawnDelay = new WaitForSeconds(2f);
-
-    private Coroutine _coroutine;
+    [SerializeField] private Unit _prefab;
+    [SerializeField, Range(0f, 10f)] private float _waitSeconds;
     
-    private List<Spawn_Point> _spawnPoints;
+    private WaitForSeconds _spawnDelay;
+    private Coroutine _coroutine;
+    private List<Point> _spawnPoints;
 
     private void Awake()
     {
+        _spawnDelay = new WaitForSeconds(_waitSeconds);
         GetSpawnerPoint();
     }
 
@@ -22,7 +22,7 @@ public class Spawner_Script : MonoBehaviour
     {
         if (_coroutine is not null)
             StopCoroutine(_coroutine);
-        
+
         _coroutine = StartCoroutine(Coroutine());
     }
 
@@ -33,16 +33,15 @@ public class Spawner_Script : MonoBehaviour
 
     private void GetSpawnerPoint()
     {
-        _spawnPoints = GetComponentsInChildren<Spawn_Point>().ToList();
-        
+        _spawnPoints = GetComponentsInChildren<Point>().ToList();
     }
 
     private IEnumerator Coroutine()
     {
         foreach (var point in _spawnPoints)
         {
-            point.Spawn(prifab);
-       
+            point.Spawn(_prefab);
+
             yield return _spawnDelay;
         }
     }
